@@ -1,0 +1,25 @@
+﻿Deployment Information
+======================
+Date: 2026-03-06 01:12:06
+Instance ID: 
+Public IP: 52.54.195.182
+Security Group: sg-0258e75ef8d205e08
+S3 Bucket: hotel-mgmt-15644
+Frontend URL: http://hotel-mgmt-15644.s3-website-us-east-1.amazonaws.com
+Backend API: http://52.54.195.182:8085-8091
+
+Login Credentials:
+Username: admin
+Password: admin123
+
+Management:
+View logs: ssh -i hotel-key.pem ubuntu@52.54.195.182 "cd /opt/hotel-app && docker-compose logs -f"
+Restart services: ssh -i hotel-key.pem ubuntu@52.54.195.182 "cd /opt/hotel-app && docker-compose restart"
+Stop services: ssh -i hotel-key.pem ubuntu@52.54.195.182 "cd /opt/hotel-app && docker-compose down"
+
+Cleanup:
+To remove all resources:
+aws ec2 terminate-instances --instance-ids 
+aws s3 rb s3://hotel-mgmt-15644 --force
+aws ec2 delete-security-group --group-id sg-0258e75ef8d205e08
+aws ec2 delete-key-pair --key-name hotel-key

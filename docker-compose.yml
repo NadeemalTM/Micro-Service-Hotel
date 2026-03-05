@@ -1,0 +1,213 @@
+version: '3.8'
+
+services:
+  # Employee Management Service
+  employee-service:
+    build:
+      context: ./backend/employeeManagementService
+      dockerfile: Dockerfile
+    ports:
+      - "8085:8085"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-employee:5432/employeedb
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=HotelAdmin2026!
+      - JWT_SECRET=YourSecureJWTSecretKey2026!@#$$%
+    depends_on:
+      - postgres-employee
+    networks:
+      - hotel-network
+
+  # Room Management Service
+  room-service:
+    build:
+      context: ./backend/roomManagementService
+      dockerfile: Dockerfile
+    ports:
+      - "8086:8086"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-room:5432/roomdb
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=HotelAdmin2026!
+    depends_on:
+      - postgres-room
+    networks:
+      - hotel-network
+
+  # Reservation Management Service
+  reservation-service:
+    build:
+      context: ./backend/reservationManagementService
+      dockerfile: Dockerfile
+    ports:
+      - "8087:8087"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-reservation:5432/reservationdb
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=HotelAdmin2026!
+    depends_on:
+      - postgres-reservation
+    networks:
+      - hotel-network
+
+  # Restaurant Management Service
+  restaurant-service:
+    build:
+      context: ./backend/restaurantManagementService
+      dockerfile: Dockerfile
+    ports:
+      - "8088:8088"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-restaurant:5432/restaurantdb
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=HotelAdmin2026!
+    depends_on:
+      - postgres-restaurant
+    networks:
+      - hotel-network
+
+  # Kitchen Management Service
+  kitchen-service:
+    build:
+      context: ./backend/kitchenManagementService
+      dockerfile: Dockerfile
+    ports:
+      - "8089:8089"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-kitchen:5432/kitchendb
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=HotelAdmin2026!
+    depends_on:
+      - postgres-kitchen
+    networks:
+      - hotel-network
+
+  # Inventory Management Service
+  inventory-service:
+    build:
+      context: ./backend/inventoryManagementService
+      dockerfile: Dockerfile
+    ports:
+      - "8090:8090"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-inventory:5432/inventorydb
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=HotelAdmin2026!
+    depends_on:
+      - postgres-inventory
+    networks:
+      - hotel-network
+
+  # Event Management Service
+  event-service:
+    build:
+      context: ./backend/eventManagementService
+      dockerfile: Dockerfile
+    ports:
+      - "8091:8091"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-event:5432/eventdb
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=HotelAdmin2026!
+    depends_on:
+      - postgres-event
+    networks:
+      - hotel-network
+
+  # PostgreSQL Databases
+  postgres-employee:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=employeedb
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=HotelAdmin2026!
+    volumes:
+      - employee-data:/var/lib/postgresql/data
+    networks:
+      - hotel-network
+
+  postgres-room:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=roomdb
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=HotelAdmin2026!
+    volumes:
+      - room-data:/var/lib/postgresql/data
+    networks:
+      - hotel-network
+
+  postgres-reservation:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=reservationdb
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=HotelAdmin2026!
+    volumes:
+      - reservation-data:/var/lib/postgresql/data
+    networks:
+      - hotel-network
+
+  postgres-restaurant:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=restaurantdb
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=HotelAdmin2026!
+    volumes:
+      - restaurant-data:/var/lib/postgresql/data
+    networks:
+      - hotel-network
+
+  postgres-kitchen:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=kitchendb
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=HotelAdmin2026!
+    volumes:
+      - kitchen-data:/var/lib/postgresql/data
+    networks:
+      - hotel-network
+
+  postgres-inventory:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=inventorydb
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=HotelAdmin2026!
+    volumes:
+      - inventory-data:/var/lib/postgresql/data
+    networks:
+      - hotel-network
+
+  postgres-event:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=eventdb
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=HotelAdmin2026!
+    volumes:
+      - event-data:/var/lib/postgresql/data
+    networks:
+      - hotel-network
+
+networks:
+  hotel-network:
+    driver: bridge
+
+volumes:
+  employee-data:
+  room-data:
+  reservation-data:
+  restaurant-data:
+  kitchen-data:
+  inventory-data:
+  event-data:

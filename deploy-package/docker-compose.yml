@@ -1,0 +1,58 @@
+﻿version: '3.8'
+services:
+  employee-service:
+    image: openjdk:17-jdk-slim
+    ports: ["8085:8085"]
+    volumes: ["./employeeManagementService.jar:/app/app.jar"]
+    command: java -Xmx384m -Xms256m -jar /app/app.jar
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    restart: unless-stopped
+  room-service:
+    image: openjdk:17-jdk-slim
+    ports: ["8086:8086"]
+    volumes: ["./roomManagementService.jar:/app/app.jar"]
+    command: java -Xmx384m -Xms256m -jar /app/app.jar
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    restart: unless-stopped
+  reservation-service:
+    image: openjdk:17-jdk-slim
+    ports: ["8087:8087"]
+    volumes: ["./reservationManagementService.jar:/app/app.jar"]
+    command: java -Xmx384m -Xms256m -jar /app/app.jar
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    restart: unless-stopped
+  restaurant-service:
+    image: openjdk:17-jdk-slim
+    ports: ["8088:8088"]
+    volumes: ["./restaurantManagementService.jar:/app/app.jar"]
+    command: java -Xmx384m -Xms256m -jar /app/app.jar
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    restart: unless-stopped
+  kitchen-service:
+    image: openjdk:17-jdk-slim
+    ports: ["8089:8089"]
+    volumes: ["./kitchenManagementService.jar:/app/app.jar"]
+    command: java -Xmx384m -Xms256m -jar /app/app.jar
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    restart: unless-stopped
+  inventory-service:
+    image: openjdk:17-jdk-slim
+    ports: ["8090:8090"]
+    volumes: ["./inventoryManagementService.jar:/app/app.jar"]
+    command: java -Xmx384m -Xms256m -jar /app/app.jar
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    restart: unless-stopped
+  event-service:
+    image: openjdk:17-jdk-slim
+    ports: ["8091:8091"]
+    volumes: ["./eventManagementService.jar:/app/app.jar"]
+    command: java -Xmx384m -Xms256m -jar /app/app.jar
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    restart: unless-stopped
