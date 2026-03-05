@@ -1,14 +1,18 @@
 package com.nsbm.group03.employeeManagementService.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nsbm.group03.employeeManagementService.config.JwtAuthenticationFilter;
 import com.nsbm.group03.employeeManagementService.dto.EmployeeDTO;
 import com.nsbm.group03.employeeManagementService.service.EmployeeService;
+import com.nsbm.group03.employeeManagementService.service.JwtService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDate;
@@ -23,6 +27,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(EmployeeController.class)
+@AutoConfigureMockMvc(addFilters = false)
 class EmployeeControllerTest {
     
     @Autowired
@@ -30,6 +35,15 @@ class EmployeeControllerTest {
     
     @MockBean
     private EmployeeService employeeService;
+    
+    @MockBean
+    private JwtService jwtService;
+    
+    @MockBean
+    private JwtAuthenticationFilter jwtAuthenticationFilter;
+    
+    @MockBean
+    private UserDetailsService userDetailsService;
     
     @Autowired
     private ObjectMapper objectMapper;
