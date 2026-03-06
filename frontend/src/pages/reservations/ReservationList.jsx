@@ -18,11 +18,11 @@ const ReservationList = () => {
 
   const getStatusBadge = (status) => {
     const colors = {
-      CONFIRMED: 'background: #dbeafe; color: #1e40af',
-      CHECKED_IN: 'background: #d1fae5; color: #065f46',
-      CHECKED_OUT: 'background: #e5e7eb; color: #374151',
-      CANCELLED: 'background: #fee2e2; color: #991b1b',
-      PENDING: 'background: #fef3c7; color: #92400e'
+      CONFIRMED: { background: '#dbeafe', color: '#1e40af' },
+      CHECKED_IN: { background: '#d1fae5', color: '#065f46' },
+      CHECKED_OUT: { background: '#e5e7eb', color: '#374151' },
+      CANCELLED: { background: '#fee2e2', color: '#991b1b' },
+      PENDING: { background: '#fef3c7', color: '#92400e' }
     };
     return (
       <span style={{ padding: '4px 12px', borderRadius: '12px', fontSize: '0.875rem', fontWeight: '500', ...colors[status] }}>

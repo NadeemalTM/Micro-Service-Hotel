@@ -4,6 +4,31 @@
 
 A comprehensive microservices-based hotel management system built with Spring Boot (Backend) and React (Frontend).
 
+Frontend URL
+Hotel Management System: http://hotel-mgmt-15644.s3-website-us-east-1.amazonaws.com
+
+Backend API Services
+Employee Service: http://52.54.195.182:8085
+Room Service: http://52.54.195.182:8086
+Reservation Service: http://52.54.195.182:8087
+Restaurant Service: http://52.54.195.182:8088
+Kitchen Service: http://52.54.195.182:8089
+Inventory Service: http://52.54.195.182:8090
+Event Service: http://52.54.195.182:8091
+
+Swagger API Documentation
+Employee Service: http://52.54.195.182:8085/swagger-ui/index.html
+Room Service: http://52.54.195.182:8086/swagger-ui/index.html
+Reservation Service: http://52.54.195.182:8087/swagger-ui/index.html
+Restaurant Service: http://52.54.195.182:8088/swagger-ui/index.html
+Kitchen Service: http://52.54.195.182:8089/swagger-ui/index.html
+Inventory Service: http://52.54.195.182:8090/swagger-ui/index.html
+Event Service: http://52.54.195.182:8091/swagger-ui/index.html
+Login Credentials:
+
+Username: admin
+Password: admin123
+
 **Latest Update (March 6, 2026):**
 - ✅ All 7 backend microservices fully operational
 - ✅ Frontend application complete with all CRUD features

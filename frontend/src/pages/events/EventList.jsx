@@ -14,11 +14,11 @@ const EventList = () => {
 
   const getStatusBadge = (status) => {
     const colors = {
-      PLANNED: 'background: #dbeafe; color: #1e40af',
-      CONFIRMED: 'background: #d1fae5; color: #065f46',
-      IN_PROGRESS: 'background: #fef3c7; color: #92400e',
-      COMPLETED: 'background: #e5e7eb; color: #374151',
-      CANCELLED: 'background: #fee2e2; color: #991b1b'
+      PLANNED: { background: '#dbeafe', color: '#1e40af' },
+      CONFIRMED: { background: '#d1fae5', color: '#065f46' },
+      IN_PROGRESS: { background: '#fef3c7', color: '#92400e' },
+      COMPLETED: { background: '#e5e7eb', color: '#374151' },
+      CANCELLED: { background: '#fee2e2', color: '#991b1b' }
     };
     return (
       <span style={{ padding: '4px 12px', borderRadius: '12px', fontSize: '0.875rem', fontWeight: '500', ...colors[status] }}>
