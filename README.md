@@ -333,7 +333,7 @@ Before running the application, ensure you have:
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/NadeemalTM/Micro-Service-Hotel.git
 cd "Hotel Micro"
 ```
 
